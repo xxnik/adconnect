@@ -2,13 +2,18 @@ import { useState } from "react";
 import "../styles/SignUp.css";
 import axios from "axios";
 
+import { Link,useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+
+
 export default function Signup() {
+
+const navigate = useNavigate();
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
     password: "",
     confirmPassword: "",
-    role: "advertiser",
   });
 
   function handleChange(e) {
@@ -20,25 +25,34 @@ export default function Signup() {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    try{
-        const response=await axios.post("http://localhost:3000/api/auth/signup", formData);
-        console.log(response);
-    }catch(error){
-        console.log(error);
+    if (formData.password !== formData.confirmPassword) {
+      toast.error("Passwords do not match");
+      return;
     }
-    
-    
+    try {
+      const response = await axios.post(
+        "http://localhost:3000/api/auth/signup",
+        formData,
+      );
+      if(response.data.success){
+        navigate("/login");
+        toast.success("Account created successsfully");
+      }
+      
+      // toast.success("Signup successful!");
+      
+    } catch (error) {
+      console.log(error.response?.data || error.messag);
+    }
   }
 
   return (
     <div className="signup-container">
       <div className="signup-card">
-
         <h1>Create Account</h1>
         <p>Join AdsPlatform today</p>
 
         <form onSubmit={handleSubmit}>
-
           <div className="input-group">
             <label>Full Name</label>
 
@@ -91,30 +105,15 @@ export default function Signup() {
             />
           </div>
 
-          <div className="input-group">
-            <label>Register As</label>
-
-            <select
-              name="role"
-              value={formData.role}
-              onChange={handleChange}
-            >
-              <option value="advertiser">Advertiser</option>
-              <option value="owner">Billboard Owner</option>
-            </select>
-          </div>
-
           <button className="signup-btn" type="submit">
             Create Account
           </button>
-
         </form>
 
         <p className="login-text">
           Already have an account?
-          <span> Login</span>
+          <Link to="/Login">Login</Link>
         </p>
-
       </div>
     </div>
   );

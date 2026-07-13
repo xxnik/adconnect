@@ -1,6 +1,8 @@
 import { useState } from "react";
 import "../styles/Login.css";
 import axios from "axios";
+import { Link } from 'react-router-dom';
+
 
 export default function Login() {
   const [formData, setFormData] = useState({
@@ -28,8 +30,6 @@ export default function Login() {
     console.log(error);
   }
 
-    // Later
-    // axios.post("/api/auth/login", formData);
   }
   
   return (
@@ -76,7 +76,7 @@ export default function Login() {
             <a href="#">Forgot Password?</a>
           </div>
 
-          <button className="login-btn" type="submit">
+          <button className="login-btn" type="submit" >
             Login
           </button>
 
@@ -84,7 +84,8 @@ export default function Login() {
 
         <p className="signup-text">
           Don't have an account?
-          <span> Sign Up</span>
+        <Link to="/SignUp">Sign Up</Link>
+          
         </p>
 
       </div>
