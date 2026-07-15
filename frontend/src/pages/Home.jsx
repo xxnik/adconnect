@@ -29,17 +29,8 @@ export default function Home() {
   return (
     <div className="home">
       {/* Navbar */}
-      <nav className="navbar">
-        <h2 className="logo">AdsPlatform</h2>
-
-        <ul className="nav-links">
-          <Link to="/">Home</Link>
-          <li>Browse</li>
-          <li>Become Owner</li>
-          <Link to="/login">Login</Link>
-          <Link to="/signup">Signup</Link>
-        </ul>
-      </nav>
+      
+      
 
       {/* Hero */}
       <section className="hero">
