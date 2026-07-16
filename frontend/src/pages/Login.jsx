@@ -6,10 +6,8 @@ import { toast } from "react-toastify";
 import api from "../api/api";
 import { AuthContext } from "../context/AuthContext";
 
-
-
 export default function Login() {
-    const { user, setUser } = useContext(AuthContext);
+  const { user, setUser } = useContext(AuthContext);
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -23,19 +21,15 @@ export default function Login() {
   }
 
   async function handleSubmit(e) {
-    
     e.preventDefault();
-  
+
     try {
-      const response = await api.post(
-        "/auth/login",
-        formData,
-      );
-      
+      const response = await api.post("/auth/login", formData);
+
       console.log(response.data);
       if (response.data.success) {
         localStorage.setItem("token", response.data.token);
-        setUser(response.data.user); 
+        setUser(response.data.user);
         navigate("/");
         toast.success("Login SuccessFull");
       }

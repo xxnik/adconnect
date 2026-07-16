@@ -3,6 +3,8 @@ import Home from "../pages/Home";
 import Login from "../pages/Login";
 import SignUp from "../pages/SignUp";
 import Layout from "../Layout/Layout"
+import DashBoard from "../pages/DashBoard"
+import AddListing  from "../pages/AddListing"
 
 export default function AppRoutes() {
     return (
@@ -13,6 +15,8 @@ export default function AppRoutes() {
                     <Route path="/" element={<Home />} />
                     <Route path="/login" element={<Login />} />
                     <Route path="/SignUp" element={<SignUp />} />
+                    <Route path="/Dashboard" element={<DashBoard />} />
+                    <Route path="/AddListing" element={<AddListing />} />
                 </Route>
             </Routes>
         </BrowserRouter>

@@ -1,23 +1,22 @@
-import { useState,useContext } from "react";
+import { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import "../styles/Navbar.css";
 import { AuthContext } from "../context/AuthContext";
 import { toast } from "react-toastify";
 
-
 function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
 
-  const {user,setUser}=useContext(AuthContext);
+  const { user, setUser } = useContext(AuthContext);
 
-  function handleLogout(){
+  function handleLogout() {
     console.log("logout clicked");
     localStorage.removeItem("token");
     setUser(null);
     toast.success("LogOut SuccessFull");
   }
- 
-console.log(user);
+
+  console.log(user);
   return (
     <nav className="navbar">
       <div className="navbar-logo">
@@ -35,12 +34,17 @@ console.log(user);
           Home
         </Link>
 
-        {user? (
-           <button className="logout-btn" onClick={handleLogout}>Logout</button>
-        ) : (
-         
+        {user ? (
           <>
-          
+            <Link to="/DashBoard" onClick={() => setMenuOpen(false)}>
+              Become Host
+            </Link>
+            <button className="logout-btn" onClick={handleLogout}>
+              Logout
+            </button>
+          </>
+        ) : (
+          <>
             <Link to="/login" onClick={() => setMenuOpen(false)}>
               Become Host
             </Link>
