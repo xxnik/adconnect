@@ -1,0 +1,214 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap');
+
+.add-listing-page {
+  --ink: #12172B;
+  --amber: #FFB627;
+  --amber-deep: #F59E0B;
+  --teal: #0F766E;
+  --paper: #F6F4EF;
+  --white: #FFFFFF;
+  --slate: #5B6272;
+  --line: #E4E0D6;
+
+  position: relative;
+  min-height: 100vh;
+  font-family: 'Inter', system-ui, sans-serif;
+  padding: 56px 20px 80px;
+}
+
+.add-listing-sky {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 280px;
+  background: linear-gradient(180deg, #1B2140 0%, #423358 100%);
+  z-index: 0;
+}
+
+.add-listing-container {
+  position: relative;
+  z-index: 1;
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.add-listing-card {
+  background: var(--white);
+  border-radius: 14px;
+  padding: 44px 44px 40px;
+  box-shadow: 0 30px 60px -20px rgba(10, 12, 30, 0.4);
+}
+
+.form-eyebrow {
+  display: inline-block;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--amber-deep);
+  background: #FFF4DC;
+  padding: 6px 12px;
+  border-radius: 999px;
+  margin-bottom: 18px;
+}
+
+.add-listing-card h1 {
+  font-family: 'Archivo Black', 'Inter', sans-serif;
+  font-size: 26px;
+  color: var(--ink);
+  margin: 0 0 8px;
+}
+
+.form-subtext {
+  color: var(--slate);
+  font-size: 14px;
+  margin: 0 0 32px;
+  line-height: 1.5;
+}
+
+.form-section {
+  padding-bottom: 24px;
+  margin-bottom: 24px;
+  border-bottom: 1px solid var(--line);
+}
+
+.form-section:last-of-type {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.form-section h4 {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--teal);
+  margin: 0 0 16px;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.form-group {
+  margin-bottom: 16px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 7px;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--paper);
+  font-size: 14px;
+  font-family: 'Inter', sans-serif;
+  color: var(--ink);
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 100px;
+  font-family: 'Inter', sans-serif;
+  line-height: 1.5;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: #9AA0AF;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--amber-deep);
+  background: var(--white);
+}
+
+.prefixed-input {
+  display: flex;
+  align-items: stretch;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--paper);
+  overflow: hidden;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.prefixed-input:focus-within {
+  border-color: var(--amber-deep);
+  background: var(--white);
+}
+
+.prefixed-input span {
+  display: flex;
+  align-items: center;
+  padding: 0 12px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-weight: 600;
+  color: var(--slate);
+  background: var(--line);
+}
+
+.prefixed-input input {
+  border: none;
+  background: transparent;
+  flex: 1;
+}
+
+.prefixed-input input:focus {
+  outline: none;
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 14px 0;
+  background: var(--ink);
+  color: var(--white);
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  margin-top: 8px;
+  transition: background 0.15s ease, color 0.15s ease, transform 0.1s ease;
+}
+
+.submit-btn:hover:not(:disabled) {
+  background: var(--amber-deep);
+  color: var(--ink);
+}
+
+.submit-btn:disabled {
+  background: #C9CDD8;
+  cursor: not-allowed;
+}
+
+.submit-btn:active:not(:disabled) {
+  transform: scale(0.99);
+}
+
+@media (max-width: 560px) {
+  .add-listing-card {
+    padding: 32px 24px 28px;
+  }
+  .row {
+    grid-template-columns: 1fr;
+  }
+}

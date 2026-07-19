@@ -31,6 +31,9 @@ model Billboard {
 
   pricePerDay   Float
 
+  imageUrl      String?
+  imagePublicId String?
+
   isActive      Boolean   @default(true)
 
   ownerId       String

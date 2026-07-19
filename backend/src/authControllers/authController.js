@@ -9,7 +9,7 @@ const jwt = require("jsonwebtoken");
 
 
 const getMe=async(req,res)=>{
-    console.log("User ID:", req.userId);
+  
   try{
     const user=await prisma.user.findUnique({
       where:{

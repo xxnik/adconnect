@@ -1,116 +1,246 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap');
+
+.login-page {
+  --ink: #12172B;
+  --amber: #FFB627;
+  --amber-deep: #F59E0B;
+  --teal: #0F766E;
+  --paper: #F6F4EF;
+  --white: #FFFFFF;
+  --slate: #5B6272;
+  --line: #E4E0D6;
+
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  background: linear-gradient(180deg, #1B2140 0%, #423358 45%, #C9793B 100%);
+  overflow: hidden;
+  font-family: 'Inter', system-ui, sans-serif;
 }
 
-body {
-    font-family: Arial, Helvetica, sans-serif;
-    background: #f5f7fb;
+.login-sky {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.skyline {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 6px;
+  opacity: 0.3;
+}
+
+.skyline span {
+  width: 22px;
+  background: #0D1026;
+  border-top: 2px solid rgba(255, 182, 39, 0.25);
 }
 
 .login-container {
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: linear-gradient(135deg, #4f46e5, #7c3aed);
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 420px;
 }
 
 .login-card {
-    width: 400px;
-    background: white;
-    border-radius: 15px;
-    padding: 40px;
-    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+  background: var(--white);
+  border-radius: 10px;
+  padding: 44px 40px 36px;
+  box-shadow:
+    0 30px 60px -20px rgba(10, 12, 30, 0.55),
+    0 0 0 8px #0D1026,
+    0 0 0 12px rgba(255, 182, 39, 0.4);
+  text-align: center;
+}
+
+.login-eyebrow {
+  display: inline-block;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--amber-deep);
+  background: #FFF4DC;
+  padding: 6px 12px;
+  border-radius: 999px;
+  margin-bottom: 18px;
 }
 
 .login-card h1 {
-    text-align: center;
-    margin-bottom: 10px;
-    color: #222;
+  font-family: 'Archivo Black', 'Inter', sans-serif;
+  font-size: 28px;
+  color: var(--ink);
+  margin: 0 0 8px;
 }
 
-.login-card p {
-    text-align: center;
-    color: gray;
-    margin-bottom: 30px;
+.login-card > p {
+  color: var(--slate);
+  font-size: 14px;
+  margin: 0 0 30px;
+}
+
+.login-card form {
+  text-align: left;
 }
 
 .input-group {
-    margin-bottom: 20px;
+  margin-bottom: 18px;
 }
 
 .input-group label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: bold;
+  display: block;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 7px;
 }
 
 .input-group input {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    outline: none;
-    font-size: 16px;
-    transition: 0.3s;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--paper);
+  font-size: 14px;
+  font-family: 'Inter', sans-serif;
+  color: var(--ink);
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.input-group input::placeholder {
+  color: #9AA0AF;
 }
 
 .input-group input:focus {
-    border-color: #4f46e5;
+  outline: none;
+  border-color: var(--amber-deep);
+  background: var(--white);
+}
+
+.password-field {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.password-field input {
+  padding-right: 56px;
+}
+
+.toggle-visibility {
+  position: absolute;
+  right: 10px;
+  background: none;
+  border: none;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--slate);
+  cursor: pointer;
+  padding: 4px 6px;
+}
+
+.toggle-visibility:hover {
+  color: var(--ink);
 }
 
 .options {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 25px;
-    font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 4px 0 24px;
+  font-size: 13px;
 }
 
 .remember {
-    display: flex;
-    align-items: center;
-    gap: 6px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: var(--ink);
+  cursor: pointer;
+}
+
+.remember input {
+  accent-color: var(--ink);
+  width: 15px;
+  height: 15px;
+  cursor: pointer;
 }
 
 .options a {
-    text-decoration: none;
-    color: #4f46e5;
+  color: var(--teal);
+  text-decoration: none;
+  font-weight: 600;
 }
 
 .options a:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
 .login-btn {
-    width: 100%;
-    padding: 12px;
-    background: #4f46e5;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 17px;
-    transition: 0.3s;
+  width: 100%;
+  padding: 13px 0;
+  background: var(--ink);
+  color: var(--white);
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease, transform 0.1s ease;
 }
 
-.login-btn:hover {
-    background: #3730a3;
+.login-btn:hover:not(:disabled) {
+  background: var(--amber-deep);
+  color: var(--ink);
+}
+
+.login-btn:disabled {
+  background: #C9CDD8;
+  cursor: not-allowed;
+}
+
+.login-btn:active:not(:disabled) {
+  transform: scale(0.99);
 }
 
 .signup-text {
-    margin-top: 20px;
-    text-align: center;
+  text-align: center;
+  font-size: 13px;
+  color: var(--slate);
+  margin: 22px 0 0;
 }
 
-.signup-text span {
-    color: #4f46e5;
-    font-weight: bold;
-    cursor: pointer;
+.signup-text a {
+  color: var(--ink);
+  font-weight: 700;
+  text-decoration: underline;
+  margin-left: 4px;
 }
 
-.signup-text span:hover {
-    text-decoration: underline;
+.signup-text a:hover {
+  color: var(--amber-deep);
+}
+
+@media (max-width: 480px) {
+  .login-card {
+    padding: 34px 24px 28px;
+  }
+  .login-card h1 {
+    font-size: 24px;
+  }
 }

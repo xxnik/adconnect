@@ -4,7 +4,9 @@ import Login from "../pages/Login";
 import SignUp from "../pages/SignUp";
 import Layout from "../Layout/Layout"
 import DashBoard from "../pages/DashBoard"
-import AddListing  from "../pages/AddListing"
+import CreateBillboard  from "../pages/CreateBillboard"
+
+import EditBillboard  from "../pages/EditBillboard"
 
 export default function AppRoutes() {
     return (
@@ -16,7 +18,10 @@ export default function AppRoutes() {
                     <Route path="/login" element={<Login />} />
                     <Route path="/SignUp" element={<SignUp />} />
                     <Route path="/Dashboard" element={<DashBoard />} />
-                    <Route path="/AddListing" element={<AddListing />} />
+                    <Route path="/CreateBillboard" element={<CreateBillboard/>} />
+                    <Route path="/editBillboard/:id" element={<EditBillboard/>} />
+                    {/* <Route path="/updateBillboard/:id" element={<UpdateBillboard/>} /> */}
+
                 </Route>
             </Routes>
         </BrowserRouter>
