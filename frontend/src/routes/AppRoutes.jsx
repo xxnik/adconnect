@@ -5,7 +5,7 @@ import SignUp from "../pages/SignUp";
 import Layout from "../Layout/Layout"
 import DashBoard from "../pages/DashBoard"
 import CreateBillboard  from "../pages/CreateBillboard"
-
+import BillboardDetails from "../pages/BillboardDetails";
 import EditBillboard  from "../pages/EditBillboard"
 
 export default function AppRoutes() {
@@ -21,6 +21,7 @@ export default function AppRoutes() {
                     <Route path="/CreateBillboard" element={<CreateBillboard/>} />
                     <Route path="/editBillboard/:id" element={<EditBillboard/>} />
                     {/* <Route path="/updateBillboard/:id" element={<UpdateBillboard/>} /> */}
+                    <Route path="/billboard/:id" element={<BillboardDetails />} />
 
                 </Route>
             </Routes>

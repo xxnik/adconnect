@@ -1,9 +1,9 @@
 const express = require("express");
 const router = express.Router();
 const prisma = require("../config/prisma");
-const fs=require("fs");
+const fs = require("fs");
 
-const path=require("path");
+const path = require("path");
 
 const getMyBillboard = async (req, res) => {
   try {
@@ -53,7 +53,7 @@ const createBillboard = async (req, res) => {
   try {
     const { title, location, city, width, height, pricePerDay, description } =
       req.body;
-      console.log(req.file);
+    console.log(req.file);
 
     const billboard = await prisma.billboard.create({
       data: {
@@ -179,11 +179,43 @@ const deleteBillboard = async (req, res) => {
   });
 };
 
+const getOneBillboard = async (req, res) => {
+  console.log(req.params);
+  try {
+    const billboard = await prisma.billboard.findUnique({
+      where: {
+        id: req.params.id,
+      },
+      include: {
+        owner: true,
+      },
+    });
+    if (!billboard) {
+      return res.status(404).json({
+        success: false,
+        message: "Billboard not found",
+      });
+    }
+
+    res.status(200).json({
+      success: true,
+      billboard,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({
+      success: false,
+      message: "Internal Server Error",
+    });
+  }
+};
+
 module.exports = {
   getMyBillboard,
   createBillboard,
   deleteBillboard,
   getBillboardById,
   updateBillboard,
-  getAllBillboards
+  getAllBillboards,
+  getOneBillboard,
 };

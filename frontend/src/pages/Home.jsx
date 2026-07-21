@@ -3,7 +3,9 @@ import { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import api from "../api/api";
 
-const SKYLINE_HEIGHTS = [38, 62, 44, 80, 30, 56, 70, 42, 90, 34, 58, 48, 74, 40];
+const SKYLINE_HEIGHTS = [
+  38, 62, 44, 80, 30, 56, 70, 42, 90, 34, 58, 48, 74, 40,
+];
 
 export default function Home() {
   const navigate = useNavigate();
@@ -19,7 +21,7 @@ export default function Home() {
   const fetchBillboards = async () => {
     try {
       const response = await api.get("/billboard");
-
+      console.log(response);
       if (response.data.success) {
         setBillboards(response.data.billboards);
       }
@@ -50,11 +52,13 @@ export default function Home() {
 
         <div className="billboard-sign">
           <div className="sign-frame">
-            <span className="sign-eyebrow">AdConnect · Outdoor Advertising</span>
+            <span className="sign-eyebrow">
+              AdConnect · Outdoor Advertising
+            </span>
             <h1>Find the Perfect Billboard for Your Advertisement</h1>
             <p>
-              Connect with verified billboard owners and book advertising
-              space anywhere in India.
+              Connect with verified billboard owners and book advertising space
+              anywhere in India.
             </p>
 
             <form
@@ -104,29 +108,31 @@ export default function Home() {
 
               return (
                 <div className="card" key={board.id}>
-                  <span
-                    className={`status-stripe ${
-                      isAvailable ? "is-available" : "is-booked"
-                    }`}
-                  />
-
                   <div className="card-image">
-                    <span>Billboard Image</span>
+                    {board.imageUrl ? (
+                      <img
+                        src={`http://localhost:3000${board.imageUrl}`}
+                        alt={board.title}
+                        className="billboard-image"
+                      />
+                    ) : (
+                      <span>No Image</span>
+                    )}
+
+                    {isAvailable && (
+                      <span className="status-pill is-available">
+                        Available
+                      </span>
+                    )}
                   </div>
 
                   <div className="card-body">
                     <div className="card-top">
                       <h3>{board.title}</h3>
-                      <span
-                        className={`status-pill ${
-                          isAvailable ? "is-available" : "is-booked"
-                        }`}
-                      >
-                        {board.status || (isAvailable ? "Available" : "Booked")}
-                      </span>
                     </div>
 
                     <p className="card-city">📍 {board.city}</p>
+
                     <p className="card-price">
                       ₹{board.pricePerDay}
                       <span>/day</span>

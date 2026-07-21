@@ -5,6 +5,7 @@
   padding: 15px 30px;
   background: #1e293b;
   color: white;
+  border-radius: 10px 10px 0 0;
 }
 
 .navbar-logo a {

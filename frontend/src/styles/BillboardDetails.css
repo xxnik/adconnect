@@ -1,0 +1,283 @@
+.billboard-details {
+  --ink: #12172B;
+  --amber: #FFB627;
+  --amber-deep: #F59E0B;
+  --teal: #0F766E;
+  --paper: #F6F4EF;
+  --white: #FFFFFF;
+  --slate: #5B6272;
+  --line: #E4E0D6;
+
+  font-family: 'Inter', system-ui, sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+  min-height: 100vh;
+  padding: 32px 24px 80px;
+}
+
+.details-container {
+  max-width: 1080px;
+  margin: 0 auto;
+}
+
+.back-link {
+  background: none;
+  border: none;
+  color: var(--slate);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0;
+  margin-bottom: 18px;
+}
+
+.back-link:hover {
+  color: var(--ink);
+}
+
+/* Image */
+.details-image {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 7;
+  border-radius: 16px;
+  overflow: hidden;
+  background: repeating-linear-gradient(
+    135deg, #EDE9DF, #EDE9DF 10px, #E4DFD1 10px, #E4DFD1 20px
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 32px;
+}
+
+.details-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.details-image span {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #A79E8A;
+}
+
+.status-pill {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 999px;
+  box-shadow: 0 4px 12px -4px rgba(18, 23, 43, 0.4);
+}
+
+.status-pill.is-available { background: var(--white); color: var(--amber-deep); }
+.status-pill.is-booked { background: var(--white); color: var(--teal); }
+
+/* Body layout */
+.details-body {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 48px;
+  align-items: start;
+}
+
+@media (max-width: 800px) {
+  .details-body {
+    grid-template-columns: 1fr;
+  }
+}
+
+.details-top h1 {
+  font-family: 'Archivo Black', 'Inter', sans-serif;
+  font-size: 30px;
+  letter-spacing: -0.01em;
+  margin: 0 0 8px;
+  text-transform: capitalize;
+}
+
+.details-city {
+  color: var(--slate);
+  font-size: 15px;
+  margin: 0 0 28px;
+  text-transform: capitalize;
+}
+
+.details-section {
+  border-top: 1px solid var(--line);
+  padding: 24px 0;
+}
+
+.details-section h3 {
+  font-size: 16px;
+  font-weight: 700;
+  margin: 0 0 12px;
+}
+
+.details-section p {
+  color: var(--slate);
+  font-size: 14.5px;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.spec-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px 24px;
+}
+
+.spec-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.spec-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--slate);
+}
+
+.spec-value {
+  font-size: 14.5px;
+  font-weight: 600;
+  color: var(--ink);
+  text-transform: capitalize;
+}
+
+.owner-name {
+  font-weight: 600;
+  color: var(--ink);
+  text-transform: capitalize;
+}
+
+/* Booking sidebar */
+.booking-card {
+  position: sticky;
+  top: 24px;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 26px;
+  box-shadow: 0 10px 28px -18px rgba(18, 23, 43, 0.3);
+}
+
+.booking-price {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 26px;
+  font-weight: 700;
+  margin: 0 0 18px;
+}
+
+.booking-price span {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--slate);
+  margin-left: 2px;
+}
+
+.booking-btn {
+  width: 100%;
+  background: var(--ink);
+  color: var(--white);
+  border: none;
+  padding: 14px 0;
+  border-radius: 9px;
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.booking-btn:hover:not(:disabled) {
+  background: var(--amber-deep);
+  color: var(--ink);
+}
+
+.booking-btn:disabled {
+  background: #E4E0D6;
+  color: #A79E8A;
+  cursor: not-allowed;
+}
+
+.booking-note {
+  text-align: center;
+  font-size: 12.5px;
+  color: var(--slate);
+  margin: 12px 0 0;
+}
+
+/* Loading skeleton */
+.details-skeleton-image {
+  width: 100%;
+  aspect-ratio: 16 / 7;
+  border-radius: 16px;
+  background: linear-gradient(90deg, #EDEAE1 25%, #F6F4EF 37%, #EDEAE1 63%);
+  background-size: 400% 100%;
+  animation: shimmer 1.4s ease infinite;
+  margin-bottom: 32px;
+}
+
+.details-skeleton-body {
+  max-width: 600px;
+}
+
+.skeleton-line {
+  height: 16px;
+  border-radius: 6px;
+  background: linear-gradient(90deg, #EDEAE1 25%, #F6F4EF 37%, #EDEAE1 63%);
+  background-size: 400% 100%;
+  animation: shimmer 1.4s ease infinite;
+  margin-bottom: 12px;
+}
+
+.skeleton-title { height: 28px; width: 60%; }
+.skeleton-short { width: 30%; }
+.skeleton-medium { width: 80%; }
+
+@keyframes shimmer {
+  0% { background-position: 100% 0; }
+  100% { background-position: -100% 0; }
+}
+
+/* Error state */
+.details-error {
+  text-align: center;
+  padding: 100px 20px;
+  max-width: 420px;
+  margin: 0 auto;
+}
+
+.details-error h2 {
+  font-family: 'Archivo Black', 'Inter', sans-serif;
+  font-size: 22px;
+  margin: 0 0 10px;
+}
+
+.details-error p {
+  color: var(--slate);
+  font-size: 14px;
+  margin: 0 0 20px;
+}
+
+.details-error button {
+  background: var(--ink);
+  color: var(--white);
+  border: none;
+  padding: 10px 22px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+}

@@ -9,6 +9,7 @@ const {
   getBillboardById,
   updateBillboard,
   getAllBillboards,
+  getOneBillboard
 } = require("../controllers/billboard");
 router.get("/", getAllBillboards);
 
@@ -18,5 +19,6 @@ router.post("/createBillboard", auth, upload.single("image"), createBillboard);
 router.get("/:id", auth, getBillboardById);
 router.delete("/deleteBillboard/:id", auth, deleteBillboard);
 router.put("/:id", auth, updateBillboard), 
+router.get("/details/:id",getOneBillboard);
 
 module.exports = router;
